@@ -20,7 +20,7 @@ class _QuizState extends State<Quiz> {
 
   @override
   Widget build(BuildContext context) {
-    Widget ekran =  BaslangicEkrani(ekranDegistir);
+    Widget ekran = BaslangicEkrani(ekranDegistir);
     if (mevcutEkran == "soru-ekrani") {
       ekran = const SoruEkrani();
     }
@@ -29,8 +29,8 @@ class _QuizState extends State<Quiz> {
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Color.fromARGB(213, 2, 39, 173),
-              Color.fromARGB(255, 1, 29, 76),
+              Color.fromARGB(255, 0, 153, 51),
+              Color.fromARGB(255, 0, 179, 60),
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,

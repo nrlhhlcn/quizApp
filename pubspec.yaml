@@ -61,6 +61,16 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/quiz-logo.png
+    - assets/images/resim-0.jpg
+    - assets/images/resim-1.jpg
+    - assets/images/resim-2.jpg
+    - assets/images/resim-3.jpg
+    - assets/images/resim-4.jpg
+    - assets/images/resim-5.jpg
+    - assets/images/resim-6.jpg
+    - assets/images/resim-7.jpg
+    - assets/images/resim-8.jpg
+    - assets/images/resim-9.jpg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

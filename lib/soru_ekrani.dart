@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/cevap_butonlar.dart';
 import 'package:quiz_app/sorular.dart';
 
 class SoruEkrani extends StatefulWidget {
@@ -10,26 +11,58 @@ class SoruEkrani extends StatefulWidget {
 }
 
 class _SoruEkraniState extends State<SoruEkrani> {
+  var soruNumarasi = 0;
+  void soruDegistir() {
+    setState(() {
+      soruNumarasi++;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    var soru = sorular[0];
+    var soru = sorular[soruNumarasi];
     return SizedBox(
       width: double.infinity,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(soru.soruMetni),
-          const SizedBox(
-            height: 10,
-          ),
-          
-          ElevatedButton(
-            onPressed: () {},
-            child: Text(soru.soruCevaplari[0]),
-          ),
-         
+      child: Container(
+        margin: const EdgeInsets.all(40),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            ClipOval(
+              child: Image.asset(
+                'assets/images/resim-$soruNumarasi.jpg',
+                width: 100,
+                height: 300,
 
-        ],
+                fit: BoxFit.fill, // Resmi alana sığdırır
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Text(
+              soru.soruMetni,
+              style: const TextStyle(
+                color: Color.fromARGB(255, 242, 242, 244),
+                fontSize: 17,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            ...soru.soruCevaplari.map(
+              (answer) {
+                return CevapButonlar(
+                  soruDegistir: soruDegistir,
+                  metin: answer,
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
