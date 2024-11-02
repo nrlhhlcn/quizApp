@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/baslangic_ekrani.dart';
+import 'package:quiz_app/sonuc_ekrani.dart';
 import 'package:quiz_app/soru_ekrani.dart';
+import 'package:quiz_app/sorular.dart';
 
 class Quiz extends StatefulWidget {
   const Quiz({super.key});
@@ -15,6 +17,12 @@ class _QuizState extends State<Quiz> {
   void secilenCevapEkleme(String cevap) {
     secilenCevaplar.add(cevap);
 
+    if (secilenCevaplar.length == sorular.length) {
+      setState(() {
+        secilenCevaplar = [];
+        mevcutEkran = "sonuc-ekrani";
+      });
+    }
   }
 
   var mevcutEkran = "baslangic-ekrani";
@@ -31,6 +39,9 @@ class _QuizState extends State<Quiz> {
       ekran = SoruEkrani(
         secilenCevap: secilenCevapEkleme,
       );
+    }
+    if (mevcutEkran == "sonuc-ekrani") {
+      ekran = SonucEkrani(secilenCevaplar);
     }
     return Scaffold(
       body: Container(
