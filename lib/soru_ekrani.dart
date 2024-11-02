@@ -3,7 +3,10 @@ import 'package:quiz_app/cevap_butonlar.dart';
 import 'package:quiz_app/sorular.dart';
 
 class SoruEkrani extends StatefulWidget {
-  const SoruEkrani({super.key});
+  const SoruEkrani({super.key, required this.secilenCevap});
+
+  final void Function(String cevap) secilenCevap;
+
   @override
   State<SoruEkrani> createState() {
     return _SoruEkraniState();
@@ -12,7 +15,8 @@ class SoruEkrani extends StatefulWidget {
 
 class _SoruEkraniState extends State<SoruEkrani> {
   var soruNumarasi = 0;
-  void soruDegistir() {
+  void soruDegistir(String cevap) {
+    widget.secilenCevap(cevap);
     setState(() {
       soruNumarasi++;
     });
@@ -56,7 +60,9 @@ class _SoruEkraniState extends State<SoruEkrani> {
             ...soru.cevapKaristir().map(
               (answer) {
                 return CevapButonlar(
-                  soruDegistir: soruDegistir,
+                  soruDegistir: () {
+                    soruDegistir(answer);
+                  },
                   metin: answer,
                 );
               },

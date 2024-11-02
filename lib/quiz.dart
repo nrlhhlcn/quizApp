@@ -11,6 +11,12 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
+  List<String> secilenCevaplar = [];
+  void secilenCevapEkleme(String cevap) {
+    secilenCevaplar.add(cevap);
+
+  }
+
   var mevcutEkran = "baslangic-ekrani";
   void ekranDegistir() {
     setState(() {
@@ -22,7 +28,9 @@ class _QuizState extends State<Quiz> {
   Widget build(BuildContext context) {
     Widget ekran = BaslangicEkrani(ekranDegistir);
     if (mevcutEkran == "soru-ekrani") {
-      ekran = const SoruEkrani();
+      ekran = SoruEkrani(
+        secilenCevap: secilenCevapEkleme,
+      );
     }
     return Scaffold(
       body: Container(
