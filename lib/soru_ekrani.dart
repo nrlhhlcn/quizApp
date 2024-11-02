@@ -53,7 +53,7 @@ class _SoruEkraniState extends State<SoruEkrani> {
             const SizedBox(
               height: 10,
             ),
-            ...soru.soruCevaplari.map(
+            ...soru.cevapKaristir().map(
               (answer) {
                 return CevapButonlar(
                   soruDegistir: soruDegistir,
